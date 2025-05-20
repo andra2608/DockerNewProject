@@ -15,7 +15,7 @@ services:
       replicas: 3
 
   dth:
-    image: dileep22/paytrain:latest
+    image: dileep22/paytrains:latest
     ports:
       - "83:80"
     deploy:

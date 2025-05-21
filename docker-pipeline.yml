@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    
+    stages{
+        stage('checkout'){
+            steps{
+                git 'https://github.com/andra2608/DockerNewProject.git'
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'docker build -t $img .'
+            }
+        }
+        stage('tag'){
+            steps{
+                sh 'docker tag $img $repo'
+            }
+        }
+        stage('push'){
+            steps{
+                sh 'docker login -u dileep22 -p $password'
+                sh 'docker push $repo'
+            }
+        }
+    }
+}

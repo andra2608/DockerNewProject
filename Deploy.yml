@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    
+    stages{
+        stage('checkout'){
+            steps{
+                git 'https://github.com/andra2608/DockerNewProject.git'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'docker stack deploy -c docker-compose.yml paytm'
+            }
+        }
+    }
+    
+}
